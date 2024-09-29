@@ -7,8 +7,7 @@ class DriverCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = Driver
         fields = (
-                UserCreationForm.Meta.fields +
-                ("username", "first_name", "last_name", "license_number",)
+            UserCreationForm.Meta.fields + ("username", "first_name", "last_name", "license_number",)
         )
 
     def clean_licence_number(self):
