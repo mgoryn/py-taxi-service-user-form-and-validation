@@ -7,12 +7,12 @@
   <div style="display: flex; justify-content: space-between; align-items: center;">
     <h2 style="margin: 0;">Drivers:</h2>
     {% if user not in car.drivers.all %}
-      <form action="{% url 'taxi:add-driver-to-car' car.pk %}" method="post">
+      <form action="{% url "taxi:add-driver-to-car" car.pk %}" method="post">
         {% csrf_token %}
         <button type="submit" class="btn btn-success">Assign me to this car</button>
       </form>
     {% else %}
-      <form action="{% url 'taxi:remove-driver-from-car' car.pk %}" method="post">
+      <form action="{% url "taxi:remove-driver-from-car" car.pk %}" method="post">
         {% csrf_token %}
         <button type="submit" class="btn btn-danger">Delete me from this car</button>
       </form>
@@ -26,10 +26,10 @@
       <p><strong>Full Name:</strong> {{ driver.first_name }} {{ driver.last_name }}</p>
       <p><strong>License Number:</strong> {{ driver.license_number }}</p>
       <div style="margin-top: 10px;">
-        <a href="{% url "taxi:driver-license-update" driver.pk %}" class="btn btn-warning">Update</a>
+        <a href="{% url "driver-update" driver.pk %}" class="btn btn-warning">Update</a>
       </div>
     </div>
   {% endfor %}
 
-  <a href="{% url 'taxi:car-list' %}" class="btn btn-secondary" style="margin-top: 20px;">Back to Car List</a>
+  <a href="{% url "taxi:car-list" %}" class="btn btn-secondary" style="margin-top: 20px;">Back to Car List</a>
 {% endblock %}
